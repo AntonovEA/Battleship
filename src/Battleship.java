@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Battleship {
@@ -55,6 +56,7 @@ public class Battleship {
                 } else battlefield[x + i][y] = 1;
             }
             deck--;
+            cleanScreen();
         }
 
 
@@ -106,7 +108,7 @@ public class Battleship {
                 System.out.println("Miss!");
                 monitor[x][y] = 1;
                 break;
-            }
+            }cleanScreen();
         }
 
     }
@@ -163,7 +165,7 @@ public class Battleship {
                 }else {
                     xi =i;
                 }
-                battlefield [x][y];
+               // battlefield [x][y];
                 if (x + 1 + xi < battlefield.length && x + 1 + xi >=0){
                     if (battlefield[x + 1 + xi ][y + yi]!=0){
                         return false;
@@ -184,6 +186,14 @@ public class Battleship {
             }deck--;
         }return true;
 
-    }}
+    }
+public static void cleanScreen (){
+    try {
+        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+    } catch (InterruptedException | IOException e) {
+        e.printStackTrace();
+    }
+}
+}
 
 
